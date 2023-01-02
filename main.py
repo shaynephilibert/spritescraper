@@ -43,13 +43,13 @@ def spliturl(url):
     return url[0] + "="
 
 
-#
+# enumerates each page by increasing the page number in the URL
 def enumeratepage(url):
     urlname = spliturl(url)
     urlnum = int(getcurrentpage(url)) + 1
     return urlname + str(urlnum)
 
-
+# iterates through every page and extracts the png files
 def iteratepage(url):
     # Asks the user to specify the total number of pages that will be scanned
     totalpagenumber = int(input("Enter the total number of web pages to enumerate"))
@@ -59,4 +59,3 @@ def iteratepage(url):
 
 
 iteratepage("https://www.graaldepot.com/graal-bodies?nggpage=1")
-
