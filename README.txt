@@ -1,0 +1,1 @@
+Scrapes sprites from GraalDepot

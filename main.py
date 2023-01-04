@@ -1,10 +1,17 @@
 import os
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 import re
 
 
 def download_pngs(url, directory):
     # Send an HTTP request to the URL of the webpage you want to access.
+    session = requests.Session()
+    retry = Retry(connect=3, backoff_factor=0.5)
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
     response = requests.get(url)
 
     # Check if the response is valid.
@@ -54,8 +61,9 @@ def iteratepage(url):
     # Asks the user to specify the total number of pages that will be scanned
     totalpagenumber = int(input("Enter the total number of web pages to enumerate"))
     for i in range(totalpagenumber):
-        download_pngs(url, "images")
+        download_pngs(url, "animal_heads")
+        print(url)
         url = enumeratepage(url)
 
 
-iteratepage("https://www.graaldepot.com/graal-bodies?nggpage=1")
+iteratepage("https://www.graaldepot.com/animalnon-human?nggpage=1")

@@ -1,3 +1,8 @@
 *.png
 /images
+/bodies
+/venv
+/animal_heads
+/fm_heads
+/heads
 /donotcommit
